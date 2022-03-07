@@ -1,0 +1,17 @@
+﻿@{ 
+    ViewBag.Title = "Index";
+}
+<h1>Zendesk Response</h1>
+<div id="response"></div>
+<script>
+    var uri = 'http://localhost:20489/api/ZendeskResp';
+
+    $(document).ready(function () {
+        $.getJSON(uri)
+            .done(function (data) {
+                $.each(data, function (key, item) {
+                    $('<p>', { text: item.SuccessIT }).appendTo($('#response'));
+                });
+            });
+    });
+</script>
