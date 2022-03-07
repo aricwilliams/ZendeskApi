@@ -1,22 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using RestSharp;
 using System.Net.Http;
-using InterrollTest.Models;
+using Api.Models;
 using Newtonsoft.Json;
 using System.Text;
-using System.Net;
-using System.IO;
 
-namespace InterrollTest.Controllers
+namespace Api.Controllers
 
 {
     [ApiController]
     [Route("[controller]")]
-    public class MentorController : ControllerBase
+    public class PostZenController : Controller
 
     {
         [HttpGet]
@@ -30,49 +25,29 @@ namespace InterrollTest.Controllers
             UserObject user = JsonConvert.DeserializeObject<UserObject>(str);
             return user;
         }
+        ///////
 
-        ///this code throws an error i dont understand
-        /*public void Page_Load(object sender, EventArgs e)
-        {
-            string strurltest = string.Format("https://InterrollTest.zendesk.com/api/v2/users/me.json");
-            WebRequest requestObjGet = WebRequest.Create(strurltest);
-            requestObjGet.Method = "Get";
-            HttpWebResponse responseObjGet = null;
-            responseObjGet = (HttpWebResponse)requestObjGet.GetResponse();
-
-            string strresulttest = null;
-            using (Stream stream = responseObjGet.GetResponseStream())
-            {
-                StreamReader sr = new StreamReader(stream);
-                strresulttest = sr.ReadToEnd();
-                sr.Close();
-            }
-
-        }*/
-        /////end of this error code 
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-        /*[Route("SendTicket")]
+        [Route("SendTicket")]
         [HttpPost]
-        public async Task<TicketResponseObject> SendTicket()
+        public async Task<TicketResponseObject> SendTicket(TicketRequestObject ticketRequest)
         {
             var client = new HttpClient();
             //var client = new RestClient("https://InterrollTest.zendesk.com/api/v2/tickets");
 
             client.DefaultRequestHeaders.Add("Authorization", "Basic YXJpY3dpbGxpYW1zdDJAZ21haWwuY29tOk1lZXR0aGVibGFja3M0");
-            client.DefaultRequestHeaders.Add("Content-Type", "application/json");
-            var ticketRequest = new TicketRequestObject()
+            var TicketRequest = new TicketRequestObject()
             {
                 Ticket = new TicketRequest
                 {
                     Comment = new TicketComment()
                     {
-                        Body = "The Internet Keeps Dropping"
+                        Body = "The smoke is very Colorful"
                     },
-                    Subject = "SAP is not working",
+                    Subject = "My printer is on fire!",
                     Priority = "urgent"
                 }
             };
-            var bodyJson = JsonConvert.SerializeObject(ticketRequest);
+            var bodyJson = JsonConvert.SerializeObject(TicketRequest);
 
             var stringContent = new StringContent(bodyJson, Encoding.UTF8, "application/json");
             var response = await client.PostAsync("https://InterrollTest.zendesk.com/api/v2/tickets", stringContent);
@@ -87,7 +62,8 @@ namespace InterrollTest.Controllers
             {
                 return null;
             }
-        }*/
+        }
     }
 }
+
 
