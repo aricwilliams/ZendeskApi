@@ -1,7 +1,12 @@
+using Api.ApiMapper;
+using Api.Data;
+using Api.Repository;
+using Api.Repository.IRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,6 +37,13 @@ namespace Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
             });
+            //add connection string located in the appsettings.json (aric williams)
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //this makes it available to access by any other controller (aric williams)
+            services.AddScoped<ITicketRepository, TicketRepository>();
+            //this add all the mappings (aric williams)
+            services.AddAutoMapper(typeof(ApiMappings));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

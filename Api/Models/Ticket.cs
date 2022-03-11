@@ -7,18 +7,18 @@ namespace Api.Models
 {
     public class TicketRequestObject
     {
-        public TicketRequest Ticket { get; set; }
+        public TicketRequest ticket { get; set; }
     }
     public class TicketRequest
     {
-        public string Name { get; set; }
-        public string Priority { get; set; }
-        public string Subject { get; set; }
-        public TicketComment Comment { get; set; }
+        public string name { get; set; }
+        public string priority { get; set; }
+        public string subject { get; set; }
+        public TicketComment comment { get; set; }
     }
     public class TicketComment
     {
-        public string Body { get; set; }
+        public string body { get; set; }
     }
 
 
