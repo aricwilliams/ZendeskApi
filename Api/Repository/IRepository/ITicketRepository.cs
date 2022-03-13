@@ -14,6 +14,8 @@ namespace Api.Repository.IRepository
         Tickets GetTicket(int ticketId);
         //now we will check if ticket is present by id
         bool TicketExists(int id);
+        bool TicketExistsPost(string title);
+
         //now we will create ticket, when we do so we will be passing a ticket object 
         bool CreateTicket(Tickets tickets);
         bool UpdateTicket(Tickets tickets);

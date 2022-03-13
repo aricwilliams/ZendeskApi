@@ -55,6 +55,11 @@ namespace Api.Repository
         {
             return _db.Tickets.Any(a => a.Id == id);
         }
+        //This is for user posting a ticket to database.... Capital Title is user input, Lowercase title is from Tickets model
+        public bool TicketExistsPost(string Title)
+        {
+            return _db.Tickets.Any(a => a.title == Title);
+        }
 
         public bool UpdateTicket(Tickets tickets)
         {

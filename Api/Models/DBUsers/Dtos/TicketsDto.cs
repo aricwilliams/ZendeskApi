@@ -9,7 +9,9 @@ namespace Api.Models.DBUsers.Dtos
     public class TicketsDto
     {
         public int Id { get; set; }
+        [Required]
         public string title { get; set; }
+        [Required]
         public string comment { get; set; }
        // public DateTime Created { get; set; }
         //public byte[] Picture { get; set; }
