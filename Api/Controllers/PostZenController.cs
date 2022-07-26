@@ -5,6 +5,7 @@ using System.Net.Http;
 using Api.Models;
 using Newtonsoft.Json;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Api.Controllers
 
@@ -16,14 +17,14 @@ namespace Api.Controllers
     {
 
         [HttpGet]
-        public async Task<UserObject> GetUserData()
+        public async Task<List<LAticket>> GetUserData()
         {
             var client = new HttpClient();
 
-            client.DefaultRequestHeaders.Add("Authorization", "Basic YXJpY3dpbGxpYW1zdDJAZ21haWwuY29tOk1lZXR0aGVibGFja3M0");
-            var response = await client.GetAsync("https://InterrollTest.zendesk.com/api/v2/users/me.json");
+            client.DefaultRequestHeaders.Add("apikey", Client.AUTHLA);
+            var response = await client.GetAsync("https://interroll4.ladesk.com/api/v3/tickets");
             var str = await response.Content.ReadAsStringAsync();
-            UserObject user = JsonConvert.DeserializeObject<UserObject>(str);
+            List<LAticket> user = JsonConvert.DeserializeObject<List<LAticket>>(str);
             return user;
         }
 
@@ -32,22 +33,24 @@ namespace Api.Controllers
          public async Task<TicketResponseObject> SendTicket(TicketRequestObject ticketRequest)
          {
              var client = new HttpClient();
-             client.DefaultRequestHeaders.Add("Authorization", "Basic YXJpY3dpbGxpYW1zdDJAZ21haWwuY29tOk1lZXR0aGVibGFja3M0");
+             client.DefaultRequestHeaders.Add("Authorization", Client.AUTH);
+            //make into anothr func^^^^^
              var TicketRequest = new TicketRequestObject()
              {
                  ticket = new TicketRequest
                  {
                      comment = new TicketComment()
                      {
-                         body = "The smoke is very Colorful"
+                         body = "The smoke is very Colorfull"
                      },
                      subject = "My printer is on fire!",
                      priority = "urgent"
                  }
              };
              var bodyJson = JsonConvert.SerializeObject(ticketRequest);
+            //7overloads 1stone^^^^take and make lowercase //method signature 
              var stringContent = new StringContent(bodyJson, Encoding.UTF8, "application/json");
-             var response = await client.PostAsync("https://InterrollTest.zendesk.com/api/v2/tickets", stringContent);
+             var response = await client.PostAsync("https://Interroll3.zendesk.com/api/v2/tickets", stringContent);
             var str = await response.Content.ReadAsStringAsync();
                  TicketResponseObject ticketResponse = JsonConvert.DeserializeObject<TicketResponseObject>(str);
                  Console.WriteLine(str);
@@ -79,4 +82,4 @@ namespace Api.Controllers
 //PostAsync posts to the enpoint with the uri & stringcontent (our payload in the Https request)
 
 //Line51
-//content is just a part of the response object.. use Content.ReadAsStringAsync() to get the content (json) result back as a string Asynchronously 
+//content is just a part of the response object.. use Content.ReadAsStringAsync() to get the content (json) result back as a string Asynchronously https://Interroll4.zendesk.com/api/v2/users/me.json

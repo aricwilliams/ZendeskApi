@@ -1,0 +1,88 @@
+﻿@model ApiUI.Models.Tickets
+@using Microsoft.Identity.Web;
+    @*
+        For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    *@
+    @{
+    }
+<section class="sec">
+    <div class="container">
+        <header>
+            <a asp-controller="Home" asp-action="Index"><img src="~/img/interrolllogo2.png" class="logo"></a>
+            <ul>
+                <li class="nav-item">
+                    <a class="text-dark" asp-area="" asp-controller="Home" asp-action="Index">All Tickets</a>
+                </li>
+                <li class="nav-item">
+                    <a class="text-dark" asp-area="" asp-controller="Tickets" asp-action="Upsert">Add Ticket</a>
+                </li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">What's New</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Contact</a></li>
+                <li class="nav-item">Hello @User.GetDisplayName()!</li>
+
+            </ul>
+        </header>
+        <div class="content">
+            <div class="textBx">
+                <h2>Need<br><span>Help?</span></h2>
+                <p>Pleas submit a ticket by choosing your corresponding apartment below. This ticket will go to the proper support staff. We promise to tend to your issue quickly as possible. Please note, staff may be assisting other users. Wait time could be increase under these circumstances. Thank You!</p>
+                <a href="#">Choose an Option Below</a>
+            </div>
+            <div class="imgBx">
+                <img class="image" src="~/img/roller1.png">
+            </div>
+        </div>
+        <div class="margin"></div>
+        <div style="background-color:#cde8e2" class="p-3 rounded">
+            <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr class="table-danger">
+                        <th>comment</th>
+                        <th>title</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+<div class="bg-modal ">
+    <div class="modal-contents ">
+
+        <div class="close">+</div>
+
+        <form class="form1" method="post" asp-action="Upsert" enctype="multipart/form-data">
+            <div class="form-floating mb-3">
+                <h2>Submit Ticket</h2>
+                @*<select class="form-select" id="country" required>
+                        <option value="">What is Your Name?</option>
+                        <option>Aric Williams</option>
+                        <option>Joe Green</option>
+                        <option>Tom Cruise</option>
+                        <option>Jenifer Lopez</option>
+                    </select>*@
+            </div>
+            <div class="form-floating mb-3">
+                @*<select class="form-select" id="country" required>
+                        <option value="">Choose...</option>
+                        <option>IT</option>
+                        <option>Engineering</option>
+
+                    </select>*@
+            </div>
+            <label class="form-label" for="textAreaExample" asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+            <label asp-for="comment"></label>
+            <textarea class="form-control mb-3" id="textAreaExample1" rows="4" asp-for="comment"></textarea>
+            <button class="w-100 mb-2 btn btn-lg rounded-4 submit" type="submit">Submit Ticket</button>
+        </form>
+
+    </div>
+</div>
+@section Scripts{
+    <script src="~/lib/js/tickets.js"></script>
+}

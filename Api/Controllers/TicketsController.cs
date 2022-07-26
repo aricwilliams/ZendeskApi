@@ -76,7 +76,7 @@ namespace Api.Controllers
             //if dplicate then add an error 
             if (_ticketRepo.TicketExistsPost(ticketDto.title))
             {
-                ModelState.AddModelError("", "Ticket Name Is Already Made, Change title!!");
+                ModelState.AddModelError("", "Ticket Title Is Already Made, Change title!!");
                 return StatusCode(404, ModelState);
             }
            

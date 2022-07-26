@@ -33,6 +33,22 @@ namespace Api
         {
 
             services.AddControllers();
+            //THIS IS CORS SET UP this will allow another computer that outside network to access our API
+            services.AddCors(aricsoptions =>
+            // use lamba experssion to all multiple lines of configerations 
+
+            {
+                aricsoptions.AddPolicy("aricsCorsPolicy", builder =>
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+            });
+
+            // --------NOTE-----------------
+            // I could have used .withOrgins() then specified the doamin or local http host example= http://localhost:3000, then my api url :)
+
+            //after builder object you can define rules for who is allowed to access the API...
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
@@ -57,6 +73,9 @@ namespace Api
             }
 
             app.UseHttpsRedirection();
+
+            // when an http request comes in use this policy 
+            app.UseCors("aricsCorsPolicy");
 
             app.UseRouting();
 

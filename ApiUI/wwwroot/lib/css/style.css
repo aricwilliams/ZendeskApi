@@ -1,0 +1,278 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+
+/*arics code */
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.margin {
+    margin-bottom: 40px;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d3ff11;
+    transition: 0.5s;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    header .logo {
+        position: relative;
+        max-width: 130px;
+    }
+
+    header ul {
+        position: relative;
+        display: flex;
+    }
+
+        header ul li {
+            list-style: none;
+        }
+
+            header ul li a {
+                display: inline-block;
+                color: #000;
+                font-weight: 400;
+                margin-left: 40px;
+                text-decoration: none;
+            }
+
+.content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .content .textBx {
+        position: relative;
+        max-width: 600px;
+    }
+
+        .content .textBx h2 {
+            color: #000;
+            font-size: 4em;
+            line-height: 1.5em;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+            .content .textBx h2 span {
+                font-size: 2em;
+            }
+
+        .content .textBx p {
+            color: #000;
+        }
+
+        .content .textBx a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 20px;
+            background: #000;
+            color: rgb(255, 255, 255);
+            border-radius: 40px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+    .content .imgBx {
+        width: 600px;
+        display: flex;
+        padding-right: 50px;
+        margin-top: 50px;
+        justify-content: flex-end;
+    }
+
+        .content .imgBx img {
+            max-width: 460px;
+        }
+
+.thumb {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+    .thumb li {
+        display: inline-block;
+        list-style: none;
+        margin: 0 20px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+        .thumb li:hover {
+            transform: translateY(-15px);
+        }
+
+        .thumb li img {
+            max-width: 100px;
+        }
+/* .sci
+{
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.sci li
+{
+  list-style: none;
+}
+.sci li a
+{
+  display: inline-block;
+  filter: invert(1);
+  margin: 5px 0;
+  transform: scale(0.6);
+}
+.sci li a img
+{
+  width: 10px;
+} */
+
+.form1, .form2 {
+    width: 70%;
+    margin: auto;
+}
+
+.submit {
+    background-color: rgb(199, 255, 14);
+    border-radius: 50px;
+}
+
+.form2 .submit {
+    background-color: rgb(12, 12, 12);
+    border-radius: 50px;
+    color: #fff;
+}
+
+.bg-modal {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation-name: popup-move;
+    animation-duration: .75s;
+}
+
+@keyframes popup-move {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-contents {
+    height: 500px;
+    width: 660px;
+    background-color: #f7f7f7;
+    position: relative;
+    border-radius: 5px;
+}
+
+input {
+    margin: 15px auto;
+    display: block;
+    padding: 8px;
+    border: 1px solid gray;
+}
+
+.form1 {
+    margin-top: 7%;
+}
+
+.form2 {
+    margin-top: 1%;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 42px;
+    color: #333;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+    .close:hover {
+        color: rgb(179, 255, 0);
+        animation-name: spin;
+        animation-duration: 3s;
+    }
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(580deg)
+    }
+}
+
+.form h2 {
+    line-height: 40px;
+    margin-bottom: 30px;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgb(188, 255, 4); /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 0, 0); /* color of the scroll thumb */
+    border-radius: 0px; /* roundness of the scroll thumb */
+}
+/* @media (min-width:1030px){
+  .content .imgBx img
+{
+  max-width: 9160px;
+} 
+}*/
