@@ -13,7 +13,7 @@ function loadDataTable() {
         },
         "columns": [
             { "data": "comment", "width": "50%" },
-            { "data": "mitle", "width": "20%" },
+            { "data": "title", "width": "20%" },
             {
                 "data": "id",
                 "render": function (data) {
