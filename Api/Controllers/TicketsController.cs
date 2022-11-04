@@ -2,6 +2,7 @@
 using Api.Models.DBUsers.Dtos;
 using Api.Repository.IRepository;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -92,6 +93,30 @@ namespace Api.Controllers
             return CreatedAtRoute("GetTicketReturn", new { ticketTitle = ticketObj.title}, ticketObj);
         }
 
-        
+
+        [HttpDelete("{Id:int}", Name = "DeleteTicket")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult DeleteTicket(int Id)
+        {
+            if (!_ticketRepo.TicketExists(Id))
+            {
+                return NotFound();
+            }
+
+            var Obj = _ticketRepo.GetTicket(Id);
+            if (!_ticketRepo.DeleteTicket(Obj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when deleting the record {Obj.title}");
+                return StatusCode(500, ModelState);
+            }
+
+            return NoContent();
+
+        }
+
+
     }
 }

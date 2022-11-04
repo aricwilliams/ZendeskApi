@@ -3,6 +3,7 @@ using ApiUI.Repository.iRepository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,8 +66,17 @@ namespace ApiUI.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        ///
-       
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var status = await _ticketRepo.DeleteAsync(StaticInfo.APIBaseURL, id);
+            if (status)
+            {
+                return Json(new { success = true, message = "Delete Successful" });
+            }
+            return Json(new { success = false, message = "Delete Not Successful" });
+        }
+
 
     }
 }

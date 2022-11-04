@@ -10,9 +10,11 @@ namespace ApiUI.Models
     {
         public int Id { get; set; }
         [Required]
-        public string Title { get; set; }
+        public string title { get; set; }
         [Required]
         public string comment { get; set; }
+
+      
         // public DateTime Created { get; set; }
         //public byte[] Picture { get; set; }
         //public DateTime Established { get; set; }

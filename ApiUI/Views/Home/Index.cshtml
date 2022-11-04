@@ -33,12 +33,12 @@
             </div>
         </div>
         <div class="margin"></div>
-        <div style="background-color:#cde8e2" class="p-3 rounded">
-            <table id="tblData" class="table table-striped table-bordered" style="width:100%">
+        <div style="background-color:none" class="p-3 rounded">
+            <table id="tblData" class="table table-stripe table-bordered" style="width: 100%; background-color: none">
                 <thead>
-                    <tr class="table-danger">
-                        <th>comment</th>
-                        <th>title</th>
+                    <tr class="table-danger" style="background-color: none">
+                        <th>Describe Your Issue</th>
+                        <th>Subject</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -72,8 +72,8 @@
 
                     </select>*@
             </div>
-            <label class="form-label" for="textAreaExample" asp-for="Title"></label>
-            <input asp-for="Title" class="form-control" />
+            <label class="form-label" for="textAreaExample" asp-for="title"></label>
+            <input asp-for="title" class="form-control" />
             <label asp-for="comment"></label>
             <textarea class="form-control mb-3" id="textAreaExample1" rows="4" asp-for="comment"></textarea>
             <button class="w-100 mb-2 btn btn-lg rounded-4 submit" type="submit">Submit Ticket</button>
